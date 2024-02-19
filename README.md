@@ -1,2 +1,2 @@
 # kataCalc
-Kata Academy task - calculator
+Kata Academy testing task - calculator
