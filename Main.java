@@ -18,7 +18,7 @@ public class Main {
         else if (numeralSystem.equals("roman"))
             return calcRoman(str);
         else
-            return "Exception";
+            return "Exception: unknown numeric system";
     }
 
     static String calcArabic(String[] str) {
@@ -46,6 +46,9 @@ public class Main {
         RomanNumerals rn1 = RomanNumerals.valueOf(str[0]);
         RomanNumerals rn2 = RomanNumerals.valueOf(str[2]);
         int num1 = rn1.getValue(), num2 = rn2.getValue();
+
+        if (num1 > 10 || num2 > 10 || num1 < 1 || num2 < 1)
+            return "Exception: an operand cannot be greater than 10 and less than 1";
 
         int intResult = 0;
         String operator = str[1];
@@ -85,13 +88,14 @@ public class Main {
     static String checkIfRoman(String input) {
         String[] str = input.split(" ");
         if (str[0].equals("I") || str[0].equals("II") || str[0].equals("III") || str[0].equals("IV") || str[0].equals("V")
-            || str[0].equals("VI") ||str[0].equals("VII") ||str[0].equals("VIII") ||str[0].equals("IX") ||str[0].equals("X")) {
+            || str[0].equals("VI") || str[0].equals("VII") || str[0].equals("VIII") || str[0].equals("IX") || str[0].equals("X") || str[0].equals("C")) {
             if (str[2].equals("I") || str[2].equals("III") || str[2].equals("II") || str[2].equals("IV") || str[2].equals("V")
-                    || str[2].equals("VI") ||str[2].equals("VII") ||str[2].equals("VIII") ||str[2].equals("IX") ||str[2].equals("X"))
+                    || str[2].equals("VI") || str[2].equals("VII") || str[2].equals("VIII") || str[2].equals("IX") || str[2].equals("X") || str[0].equals("C"))
                 return "roman";
         }
         return "Unknown";
     }
+    
     enum RomanNumerals {
         I(1), II(2), III(3), IV(4), V(5), VI(6), VII(7), VIII(8), IX(9), X(10),
         XI(11), XII(12), XIII(13), XIV(14), XV(15), XVI(16), XVII(17), XVIII(18), XIX(19), XX(20),
